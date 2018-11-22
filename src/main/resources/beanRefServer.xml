@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- Import Apache CXF Bean Definition -->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <!-- ERPService -->
+    <bean id="ERP_Services" class="com.risechina.erp.impl.ERP_ServiceImpl"></bean>
+
+    <!-- ERPService -->
+    <bean id="COS_Services" class="com.risechina.cos.impl.COS_ServiceImpl"></bean>
+
+    <!-- ERPService -->
+    <bean id="Protal_Services" class="com.risechina.portal.impl.Protal_ServiceImpl"></bean>
+
+
+
+
+
+    <jaxws:server id="ERP_Service" serviceClass="com.risechina.erp.ERP_Service" address="/erp_services">
+        <jaxws:serviceBean>
+            <ref bean="ERP_Service"/> <!-- 要暴露的 bean 的引用 -->
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+
+    <jaxws:server id="COS_Service" serviceClass="com.risechina.cos.COS_Service" address="/cos_services">
+        <jaxws:serviceBean>
+            <ref bean="COS_Service"/> <!-- 要暴露的 bean 的引用 -->
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+
+    <jaxws:server id="Protal_Service" serviceClass="com.risechina.portal.Protal_Service" address="/protal_services">
+        <jaxws:serviceBean>
+            <ref bean="Protal_Service"/> <!-- 要暴露的 bean 的引用 -->
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+
+
+</beans>

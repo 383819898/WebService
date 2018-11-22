@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ERP_ServiceService" targetNamespace="http://erp.risechina.com/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://erp.risechina.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://erp.risechina.com/" version="1.0" xmlns:tns="http://erp.risechina.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getAesSeed" type="tns:getAesSeed" />
+<xs:element name="getAesSeedResponse" type="tns:getAesSeedResponse" />
+<xs:element name="requestBank" type="tns:requestBank" />
+<xs:element name="requestBankResponse" type="tns:requestBankResponse" />
+<xs:complexType name="requestBank">
+<xs:sequence>
+<xs:element minOccurs="0" name="code" type="xs:string" />
+<xs:element minOccurs="0" name="json" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="requestBankResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAesSeed">
+<xs:sequence>
+<xs:element minOccurs="0" name="code" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAesSeedResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAesSeedResponse">
+    <wsdl:part element="tns:getAesSeedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAesSeed">
+    <wsdl:part element="tns:getAesSeed" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="requestBank">
+    <wsdl:part element="tns:requestBank" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="requestBankResponse">
+    <wsdl:part element="tns:requestBankResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ERP_Service">
+    <wsdl:operation name="requestBank">
+      <wsdl:input message="tns:requestBank" name="requestBank">
+    </wsdl:input>
+      <wsdl:output message="tns:requestBankResponse" name="requestBankResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAesSeed">
+      <wsdl:input message="tns:getAesSeed" name="getAesSeed">
+    </wsdl:input>
+      <wsdl:output message="tns:getAesSeedResponse" name="getAesSeedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ERP_ServiceServiceSoapBinding" type="tns:ERP_Service">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="requestBank">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="requestBank">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="requestBankResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAesSeed">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAesSeed">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAesSeedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ERP_ServiceService">
+    <wsdl:port binding="tns:ERP_ServiceServiceSoapBinding" name="ERP_ServicePort">
+      <soap:address location="http://localhost:8080/erp_services" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
